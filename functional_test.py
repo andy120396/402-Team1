@@ -2,6 +2,7 @@ import time
 from django.test import LiveServerTestCase
 from selenium import webdriver
 import unittest
+browser = webdriver.Firefox()
 
 class NewUserTest(LiveServerTestCase):
 
@@ -13,7 +14,7 @@ class NewUserTest(LiveServerTestCase):
 
     def sample_test(self):
         #Dan decides to create an online bank account on a bank’s website.
-        self.assertIn('Bank Account', self.browser.title)
+        self.browser.get('http://localhost:8000')
 
         #When he opens the site, he sees a sign-up button
 
@@ -26,3 +27,6 @@ class NewUserTest(LiveServerTestCase):
         #Dan now clicks on “deposit” and deposits $1000 and we see the balance reflect that change
 
         #Dan now clicks on “withdraw” and withdraw $500 and we see the balance show the withdrawal’s details.
+
+if __name__ == '__main__':
+    unittest.main(warnings='ignore')

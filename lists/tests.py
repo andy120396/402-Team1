@@ -26,7 +26,7 @@ class SimpleTest(TestCase):
         second_item = Item()
         second_item.text = 'Item the second'
         second_item.save()
-
+    
         saved_items = Item.objects.all()
         self.assertEqual(saved_items.count(), 2)
 
@@ -34,4 +34,10 @@ class SimpleTest(TestCase):
         second_saved_item = saved_items[1]
         self.assertEqual(first_saved_item.text, 'The first name')
         self.assertEqual(second_saved_item.text, 'Item the second')
+      
+    def test_can_save_a_POST_request(self):
+        self.client.post('/lists/new', data={'item_text': 'A new  item'})
 
+        self.assertEqual(Item.objects.count(), 1)
+        new_item = Item.objects.first()
+        self.assertEqual(new_item.text, 'A new  item')

@@ -2,6 +2,7 @@ import time
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
 import unittest
 browser = webdriver.Firefox()
 
@@ -35,6 +36,9 @@ class NewUserTest(LiveServerTestCase):
 
         #The website tells him that his account is approved and shows dan a screen with his username and bank account balance that starts at zero
         #Dan now clicks on “deposit” and deposits $1000 and we see the balance reflect that change
+        clickbox = self.browser.find_element_by_id('sign_up_button')
+        move_to_button = Actionchains(self.browser).move_to_element(clickbox)
+        move_to_button.click()
 
 
         #Dan now clicks on “withdraw” and withdraw $500 and we see the balance show the withdrawal’s details.

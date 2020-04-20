@@ -19,7 +19,7 @@ class NewUserTest(LiveServerTestCase):
         self.browser.get('http://localhost:8000')
 
         #When he opens the site, he sees a that the title has to do with Bank Accounts
-        self.assert('Bank Account', self.browser.title)
+        self.assertEqual('Bank Account', self.browser.title)
 
         #He clicks sign up and is prompted to enter his first name, last name.
         inputbox = self.browser.find_element_by_id('id_new_user')

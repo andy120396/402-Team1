@@ -6,3 +6,5 @@ from django.shortcuts import render
 def home_page(request):
     return render(request, 'home.html')
 
+def subpage(request):
+    return render(request, 'subpage.html')

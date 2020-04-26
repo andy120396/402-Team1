@@ -43,7 +43,7 @@ class SimpleTest(TestCase):
         self.assertEqual(new_item.text, 'A new  item')
         
     
-   def test_displays_all_list_name(self):
+    def test_displays_all_list_name(self):
 
         name.objects.create(text='name 1')
 

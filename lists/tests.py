@@ -41,3 +41,10 @@ class SimpleTest(TestCase):
         self.assertEqual(Item.objects.count(), 1)
         new_item = Item.objects.first()
         self.assertEqual(new_item.text, 'A new  item')
+        
+    
+   def test_displays_all_list_name(self):
+
+        name.objects.create(text='name 1')
+
+        name.objects.create(text='name 2') 

@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>Bank Account</title>
+	</head>
+	<h1>Welcome Dan, your account has been approved!</h1>
+	
+	<body>
+		<p>Miles, Dan</p>
+		<table>
+			<tr>
+				<td>Your Balance:</td>
+				<td>
+					<span class="currencyinput"> $ <input type="text" name="currency" value="0" readonly></span>
+				
+				</td>
+			</tr>
+			<tr></tr>
+		</table>
+
+<button onclick="mydFunction()">DEPOSIT</button>
+<button onclick="mywFunction()">WITHDRAW</button>
+
+<p id="demo"></p>
+
+<script>
+function mydFunction() {
+  var d = prompt("Please enter your deposit amount $");
+  if (d != null) {
+    document.getElementById("demo").innerHTML =
+    "Your Balance: $" + d;
+  }
+}
+</script>
+
+<script>
+function mywFunction() {
+  var w = prompt("Please enter your withdraw amount $");
+  if (w == 0){
+	document.getElementById("demo").innerHTML =
+    "Your Balance $" + w;
+	}
+  else if (w != null) {
+    document.getElementById("demo").innerHTML =
+    "Your Balance $ -" + w;
+	}
+  }
+</script>
+
+</body>
+</html>

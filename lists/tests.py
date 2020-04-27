@@ -26,8 +26,8 @@ class SimpleTest(TestCase):
         self.assertTrue(html.strip().endswith('</html>'))
 
     def test_root_url_resolves_to_home_page_view(self):
-        found = resolve('lists/subpage')
-        self.assertEqual(found.func, subpage)
+        found = resolve('/')
+        self.assertEqual(found.func, home_page)
 
 
     

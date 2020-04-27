@@ -1,52 +1,57 @@
 <html>
 	<head>
+		<style> 
+		body{
+			background: url(https://soulgeniusbranding.com/wp-content/uploads/2018/10/Piggy-Bank.jpg); 
+			background-size: 100%;
+			text-align: center
+			}
+		</style>
 		<title>Bank Account</title>
 	</head>
+	<body>
+	
 	<h1>Welcome Dan, your account has been approved!</h1>
 	
-	<body>
-	<body style = "background: url(https://soulgeniusbranding.com/wp-content/uploads/2018/10/Piggy-Bank.jpg) ; background-size: 100%">
-	</body>
 		<p>Miles, Dan</p>
-		<table>
-			<tr>
-				<td>Your Balance:</td>
-				<td>
-					<span class="currencyinput"> $ <input type="text" name="currency" value="0" readonly></span>
-				
-				</td>
-			</tr>
-			<tr></tr>
-		</table>
+		
+	</body>
 
 <button onclick="mydFunction()">DEPOSIT</button>
 <button onclick="mywFunction()">WITHDRAW</button>
 
 <p id="demo"></p>
 
+
 <script>
+var accValue = 0.00;
 function mydFunction() {
-  var d = prompt("Please enter your deposit amount $");
+  var d = parseInt(prompt("Please enter your deposit amount $"));
+  accValue = accValue + d.valueOf();
   if (d != null) {
     document.getElementById("demo").innerHTML =
-    "Your Balance: $" + d;
+    "Your Balance: $" + accValue;
   }
 }
-</script>
 
-<script>
 function mywFunction() {
-  var w = prompt("Please enter your withdraw amount $");
-  if (w == 0){
+  var w = parseInt(prompt("Please enter your withdraw amount $"));
+  
+	if (w == 0){
 	document.getElementById("demo").innerHTML =
-    "Your Balance $" + w;
+    "Your Balance $" + accValue;
 	}
-  else if (w != null) {
+	else if (w.valueOf() > accValue) {
     document.getElementById("demo").innerHTML =
-    "Your Balance $ -" + w;
+    "You do not have that much money";
 	}
+	else{
+	accValue = accValue -= w.valueOf();
+	document.getElementById("demo").innerHTML =
+    "Your Balance $" + accValue;
+   
+   }
   }
 </script>
 
-</body>
 </html>

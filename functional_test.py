@@ -4,7 +4,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 import unittest
-browser = webdriver.Firefox()
 
 class NewUserTest(LiveServerTestCase):
 
@@ -32,16 +31,24 @@ class NewUserTest(LiveServerTestCase):
         #Dan enters his name and presses Enter
         inputbox.send_keys('Dan Miles')
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(1)
-
-        #The website tells him that his account is approved and shows dan a screen with his username and bank account balance that starts at zero
-        #Dan now clicks on “deposit” and deposits $1000 and we see the balance reflect that change
         clickbox = self.browser.find_element_by_id('sign_up_button')
         move_to_button = Actionchains(self.browser).move_to_element(clickbox)
         move_to_button.click()
+        time.sleep(1)
 
-
+        #The website tells him that his account is approved and shows dan a screen with his username
+        #Dan now clicks on “deposit” and deposits $1000 and we see the balance reflect that change
+        depobox = self.browser.find_element_by_id('depoButton')
+        move_to_button = Actionchains(self.browser).move_to_element(depobox)
+        move_to_button.click()
+        send_keys('1000')
+        send_keys(Keys.ENTER)
+        
         #Dan now clicks on “withdraw” and withdraw $500 and we see the balance show the withdrawal’s details.
+        withBox = self.browser.find_element_by_id('withButton')
+        move_to_button = Actionchains(self.browser).move_to_element(withbox)
+        move_to_button.click()
+        send_keys('500')
+        send_keys(Keys.ENTER)
+        
 
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
